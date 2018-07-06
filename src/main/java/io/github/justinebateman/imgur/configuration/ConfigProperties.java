@@ -71,10 +71,4 @@ public class ConfigProperties
         }
         return readValue(key);
     }
-
-    //@Test
-    public void readvalueTest()
-    {
-        System.out.println(readValue("projectId"));
-    }
 }

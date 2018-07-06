@@ -35,7 +35,6 @@ public class ImgurConfiguration
     @Bean
     public ImgurErrorDecoder errorDecoder()
     {
-
         return new ImgurErrorDecoder();
     }
 

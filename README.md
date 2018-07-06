@@ -27,16 +27,6 @@ imgur:
   clientSecret: CHANGEME
 ```
 
-To enable image uploading add this dependency to your project
-
-```
-<dependency>
-    <groupId>io.github.openfeign.form</groupId>
-    <artifactId>feign-form</artifactId>
-    <version>3.3.0</version>
-</dependency>
-```
-
 To add detailed logging for TestRail add the following to your application.yml file
 
 ```
@@ -52,4 +42,21 @@ public void imgurFileUpload()
     ResponseEntity<ImgurResponse<ImgurImageResponse>> responseEntity = imgurRepository.uploadImage(fileToUpload);
     System.out.println(responseEntity.getBody().getData().getLink());
 }
+```
+
+To use this library in your own project - Add the package to your component scan, and ensure that the configuration classes are excluded eg.
+
+```
+@ComponentScan(basePackages = {"your.package.here", "io.github.justinebateman.imgur"},
+  excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {ImgurConfiguration.class, ImgurErrorDecoder.class}))
+```
+
+To enable image uploading add this dependency to your project
+
+```
+<dependency>
+    <groupId>io.github.openfeign.form</groupId>
+    <artifactId>feign-form</artifactId>
+    <version>3.3.0</version>
+</dependency>
 ```
